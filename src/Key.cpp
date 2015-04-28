@@ -37,25 +37,19 @@ void Key::popKeyPull(int button)
 
 bool Key::isPress(int button)
 {
-	auto& itr = key_press.find(button);
-
-	if (itr == key_press.end())return false;
-	return true;
+	return key_press.find(button) != key_press.end();
 }
 
 bool Key::isPush(int button)
 {
-	auto& itr = key_push.find(button);
-
-	if (itr == key_push.end())return false;
+	if (key_push.find(button) == key_push.end())return false;
 	key_push.erase(key_push.find(button));
 	return true;
 }
 
 bool Key::isPull(int button)
 {
-	auto& itr = key_pull.find(button);
-	if (itr == key_pull.end())return false;
+	if (key_pull.find(button) == key_pull.end())return false;
 	key_pull.erase(key_pull.find(button));
 	return true;
 }
